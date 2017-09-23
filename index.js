@@ -8,7 +8,8 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/m8', function(request, response) {
   var q = url.parse(request.url, true).query;
-  res.end(q);
+  var txt = q.name + " " + q.phone;
+  res.end(txt);
 })
 
 app.listen(app.get('port'), function() {
