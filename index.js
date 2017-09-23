@@ -6,11 +6,11 @@ var url = require('url')
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(request, response) {
-
-})
-app.post('/', function (req, res) {
-  res.send('Got a POST request')
+app.post('/m8', function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  var q = url.parse(req.url, true).query;
+  var txt = q.name + " " + q.phone;
+  res.end(txt);
 })
 
 app.listen(app.get('port'), function() {
