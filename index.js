@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/m8', function(request, response) {
   var q = url.parse(request.url, true).query;
-  
+  res.end(q);
 })
 
 app.listen(app.get('port'), function() {
