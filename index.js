@@ -8,8 +8,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/m8', function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  var q = url.parse(req.url, true).query;
-  var txt = q.name + " " + q.phone;
+  var txt = request.body.user.name+ " "+ request.body.user.phone;
   res.end(txt);
 })
 
