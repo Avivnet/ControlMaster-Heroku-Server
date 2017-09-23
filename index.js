@@ -2,13 +2,15 @@ var express = require('express')
 var app = express()
 var fs = require('fs')
 var url = require('url')
+var bodyParser = require('body-parser')
+
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
-
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.post('/m8', function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  //var txt = req.body.name+ " "+ req.body.phone;
+  var txt = req.body.name+ " "+ req.body.phone;
   res.write("post");
 })
 
