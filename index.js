@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/m8', function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  var txt = request.body.user.name+ " "+ request.body.user.phone;
+  var txt = req.body.user.name+ " "+ req.body.user.phone;
   res.end(txt);
 })
 
