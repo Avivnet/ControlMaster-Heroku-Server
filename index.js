@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'))
 app.post('/m8', function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   var txt = req.body.name+ " "+ req.body.phone;
-  res.end(txt);
+  res.write(txt);
 })
 
 app.listen(app.get('port'), function() {
