@@ -8,8 +8,8 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/m8', function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  var txt = req.body.name+ " "+ req.body.phone;
-  res.write(txt);
+  //var txt = req.body.name+ " "+ req.body.phone;
+  res.write("post");
 })
 
 app.listen(app.get('port'), function() {
