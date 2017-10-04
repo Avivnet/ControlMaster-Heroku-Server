@@ -1,21 +1,19 @@
-var express = require('express');
-var SignalRJS = require('signalrjs');
+var express = require('express')
+var app = express()
+var fs = require('fs')
+var url = require('url')
+var bodyParser = require('body-parser')
 
 
-//Init SignalRJs 
-var signalR = SignalRJS();
+app.set('port', (process.env.PORT || 5000))
+app.use(express.static(__dirname + '/public'))
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.post('/m8', function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  var txt = req.body.name+ " "+ req.body.phone;
+  res.write("post");
+})
 
-//Create the hub connection 
-//NOTE: Server methods are defined as an object on the second argument 
-signalR.hub('chatHub', {
-    send: function (userName, message) {
-        this.clients.all.invoke('broadcast').withArgs([userName, message])
-        console.log('send:' + userName);
-    }
-});
-
-var server = express();
-server.use(express.static(__dirname));
-server.use(express.static('public'));
-server.use(signalR.createListener())
-server.listen(3000);
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})
