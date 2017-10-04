@@ -1,21 +1,18 @@
 var express = require('express');
-var SignalRJS = require('signalrjs');
+var app = express();
 
+app.set('port', (process.env.PORT || 5000));
 
-//Init SignalRJs 
-var signalR = SignalRJS();
+app.use(express.static(__dirname + '/public'));
 
-//Create the hub connection 
-//NOTE: Server methods are defined as an object on the second argument 
-signalR.hub('chatHub', {
-    send: function (userName, message) {
-        this.clients.all.invoke('broadcast').withArgs([userName, message])
-        console.log('send:' + userName);
-    }
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('pages/index');
 });
 
-var server = express();
-server.use(express.static(__dirname));
-server.use(express.static('public'));
-server.use(signalR.createListener())
-server.listen(3000);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
