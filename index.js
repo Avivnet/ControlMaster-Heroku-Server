@@ -3,8 +3,8 @@ var socket = require('socket.io');
 
 // App setup
 var app  = express();
-var server = app.listen(3333,function(){
-    console.log("Server UP ON PORT: 3333");
+var server = app.listen(8080,function(){
+    console.log("Server UP ON PORT: 8080");
 });
 
 // Static Routes
