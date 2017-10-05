@@ -1,4 +1,4 @@
-var socket = io.connect("http://localhost:3333");
+var socket = io.connect("https://nodejs-aviv.herokuapp.com:14409");
 
 socket.on('acmedia',function(data){
     alert(data);
