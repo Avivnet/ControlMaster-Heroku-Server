@@ -1,18 +1,22 @@
 var express = require('express');
-var app = express();
+var socket = require('socket.io');
 
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
+// App setup
+var app  = express();
+var server = app.listen(3333,function(){
+    console.log("Server UP ON PORT: 3333");
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+// Static Routes
+app.use(express.static('public'));
+
+// Socket Setup
+var io = socket(server);
+
+io.on('connection',function(socket){
+    console.log("WS Connected - " + socket.id);
+    socket.on('acmedia', function(data){
+
+        io.sockets.emit('acmedia',data);
+    });
 });
