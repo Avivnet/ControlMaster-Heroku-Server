@@ -8,7 +8,9 @@ app.use(express.static(__dirname + '/public'))
 
 // Static Routes
 //app.use(express.static('public'));
-
+app.get('/t', function(request, response) {
+    response.send('Hello World!')
+});
 // Socket Setup
 var io = socket(server);
 
