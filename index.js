@@ -3,12 +3,11 @@ var socket = require('socket.io');
 
 // App setup
 var app  = express();
-var server = app.listen((process.env.PORT || 5000),function(){
-    console.log("Server UP ON PORT: 80");
-});
+app.set('port', (process.env.PORT || 5000))
+app.use(express.static(__dirname + '/public'))
 
 // Static Routes
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // Socket Setup
 var io = socket(server);
