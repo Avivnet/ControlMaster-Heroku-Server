@@ -1,11 +1,39 @@
 <html>
     <head>
-        <title>Demo page</title>
+        <title>ControlMaster Web</title>
+        <script src="content/js/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="content/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" href="content/css/materialize.min.css"/>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Audiowide');
+            nav{
+                background: rgb(74, 100, 218);
+                height: 100px !important;
+                text-align: center;
+            }
+            .brand-logo{
+                font-family: 'Audiowide', cursive;
+            }
+            .codeTitle{
+                line-height: 150px;
+                font-size: 1.5em;
+                
+            }
+            .code{
+                font-size: 1.5em;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hi</h1>
+        <nav>
+            <a href="#" class="brand-logo center">ControlMaster</a>
+            <span class="center codeTitle">Connect Code:</span>
+            <span class="center code">123456</span>
+        </nav>
+        
+        
         <script src="app.js"></script>
-        <button onclick="socket.emit('acmedia','play');">Test</button>
     </body>
 </html>
