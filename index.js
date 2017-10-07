@@ -1,6 +1,6 @@
 var express = require('express');
 var socket = require('socket.io');
-var users = [];
+var connections = [];
 // App setup
 var app  = express();
 var server = app.listen((process.env.PORT || 5000),function(){
@@ -9,10 +9,10 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/newcode', function (req, res) {
     var connectionCode = getRandomInt(100000,1000000).toString();
     res.send(connectionCode);
-    users.push(connectionCode);
+    connections.push({id:connectionCode, confirmed:false, socketid:""});
 });
 app.get('/connections', function (req, res) {
-    res.send(users);
+    res.send(connections);
 });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -28,8 +28,21 @@ var io = socket(server);
 
 io.on('connection',function(socket){
     console.log("WS Connected - " + socket.id);
+    socket.on('new user', function(data){
+        var connectionIndex = find(data);
+        if(connectionIndex!==-1){
+            connections[connectionIndex].socketid = socket.id;
+        }
+    });
     socket.on('acmedia', function(data){
 
         io.sockets.emit('acmedia',data);
     });
 });
+function find(connectionCode){
+    for(var i=0; i<connections.length;i++){
+        if(connections[i].id==connectionCode)
+        return i;
+    }
+    return -1;
+}
