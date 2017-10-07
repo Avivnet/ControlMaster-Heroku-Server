@@ -6,10 +6,6 @@ var app = new Vue({
     },
     methods: {
         getCode: function(){
-            $.get( "/newcode", function( data ) {
-                app.concode = data;
-                socket.emit('new user', data);
-            });
         },
     },
     mounted() { // when the Vue app is booted up, this is run automatically.
