@@ -38,6 +38,9 @@ io.on('connection',function(socket){
 
         io.sockets.emit('acmedia',data);
     });
+    socket.on("disconnect",function(){
+        remove(connections,find(socket.id,true));
+    });
 });
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
@@ -45,4 +48,14 @@ function find(connectionCode){
         return i;
     }
     return -1;
+}
+function find(socketid,b){
+    for(var i=0; i<connections.length;i++){
+        if(connections[i].socketid==socketid)
+        return i;
+    }
+    return -1;
+}
+function remove(array, index) {
+    array.splice(index, 1);
 }
