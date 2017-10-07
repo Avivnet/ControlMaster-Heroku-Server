@@ -8,7 +8,7 @@ var server = app.listen((process.env.PORT || 5000),function(){
 });
 app.get('/newcode', function (req, res) {
     res.send('GET request to the homepage')
-})
+});
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
