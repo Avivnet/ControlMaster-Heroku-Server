@@ -22,6 +22,7 @@ nav{
     width: 10em !important;
     height: 10em !important;
     background: #4a64da !important;
+    border-radius: 30px;
 }
 .btn-play i{
     line-height: 2em !important;
