@@ -6,9 +6,6 @@ var app  = express();
 var server = app.listen((process.env.PORT || 5000),function(){
     console.log("Server UP ON PORT: "+ (process.env.PORT || 5000));
 });
-app.get('/newcode', function (req, res) {
-
-});
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
@@ -27,7 +24,6 @@ var io = socket(server);
 io.on('connection',function(socket){
     console.log("WS Connected - " + socket.id);
     var connectionCode = getRandomInt(100000,1000000).toString();
-    res.send(connectionCode);
     connections.push({id:connectionCode, confirmed:false, socketid:""});
     socket.emit('concode',connectionCode);
     /*socket.on('new user', function(data){
