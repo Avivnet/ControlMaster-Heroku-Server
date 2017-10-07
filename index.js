@@ -6,9 +6,9 @@ var app  = express();
 var server = app.listen((process.env.PORT || 5000),function(){
     console.log("Server UP ON PORT: "+ (process.env.PORT || 5000));
 });
-app.get("/newcode",function(req,res){
-    res.send(getRandomInt(100000,1000000));
-});
+app.get('/newcode', function (req, res) {
+    res.send('GET request to the homepage')
+})
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
