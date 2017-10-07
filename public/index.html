@@ -4,29 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="Content/js/jquery-3.2.1.min.js"></script>
+        <script src="Content/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-        <script src="content/js/materialize.min.js"></script>
-
         <link rel="stylesheet" href="Content/css/materialize.min.css"/>
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Audiowide');
-            nav{
-                background: rgb(74, 100, 218);
-                height: 100px !important;
-                text-align: center;
-            }
-            .brand-logo{
-                font-family: 'Audiowide', cursive;
-            }
-            .codeTitle{
-                line-height: 150px;
-                font-size: 1.5em;
-                
-            }
-            .code{
-                font-size: 1.5em;
-            }
-        </style>
+        <link rel="stylesheet" href="Content/css/style.css"/>
     </head>
     <body>
         <nav>
@@ -34,7 +15,11 @@
             <span class="center codeTitle">Connect Code:</span>
             <span class="center code">123446</span>
         </nav>
-        
+        <div class="remote">
+            <button class="btn-next  waves-effect waves-light"><<</button>
+            <button class="btn-play btn-floating btn-large waves-effect waves-light indigo darken-1 z-depth-4"><i class="material-icons">play</i></button>
+            <button class="btn-next  waves-effect waves-light">>></button>
+        </div>
         
         <script src="app.js"></script>
     </body>
