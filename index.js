@@ -17,21 +17,17 @@ function getRandomInt(min, max) {
 // Static Routes
 app.use(express.static('public'));
 
-
 // Socket Setup
 var io = socket(server);
 
 io.on('connection',function(socket){
-    console.log("WS Connected - " + socket.id);
     var connectionCode = getRandomInt(100000,1000000).toString();
-    connections.push({id:connectionCode, confirmed:false, socketid:""});
+    while(find(connectionCode)!=-1) 
+         connectionCode = getRandomInt(100000,1000000).toString();
+    var connection = {connectionCode:connectionCode,socketid:socket.id}
+    connections.push(connection);
     socket.emit('concode',connectionCode);
-    /*socket.on('new user', function(data){
-        var connectionIndex = find(data);
-        if(connectionIndex!==-1){
-            connections[connectionIndex].socketid = socket.id;
-        }
-    });*/
+    console.log("WS Connected - "+ connection);
     socket.on('acmedia', function(data){
 
         io.sockets.emit('acmedia',data);
