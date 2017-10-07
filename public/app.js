@@ -7,7 +7,7 @@ var app = new Vue({
     methods: {
         getCode: function(){
             $.get( "/newcode", function( data ) {
-                this.concode = data;
+                app.concode = data;
             });
         },
     },
