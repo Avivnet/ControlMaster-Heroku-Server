@@ -19,6 +19,9 @@ var app = new Vue({
 });
 
 
+socket.on('concode',function(data){
+    alert('key'+data);
+});
 socket.on('acmedia',function(data){
     //Data handle
 });
