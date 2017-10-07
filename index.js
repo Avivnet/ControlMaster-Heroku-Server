@@ -7,7 +7,7 @@ var server = app.listen((process.env.PORT || 5000),function(){
     console.log("Server UP ON PORT: "+ (process.env.PORT || 5000));
 });
 app.get('/newcode', function (req, res) {
-    res.send('GET request to the homepage')
+    res.send(getRandomInt(100000,1000000).toString());
 });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
