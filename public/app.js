@@ -5,11 +5,10 @@ var app = new Vue({
         concode:'000000'
     },
     methods: {
-        getCode: function(){
-        },
+        
     },
     mounted() { // when the Vue app is booted up, this is run automatically.
-        this.getCode();
+       
         
     }
 });
