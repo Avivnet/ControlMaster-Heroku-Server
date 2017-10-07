@@ -22,7 +22,7 @@ nav{
     width: 10em !important;
     height: 10em !important;
     background: #4a64da !important;
-    border-radius: 30px;
+    
 }
 .btn-play i{
     line-height: 2em !important;
@@ -34,6 +34,7 @@ nav{
     width: 6em !important;
     height: 6em !important;
     padding: 0 !important;
+    border-radius: 30px;
 }
 .btn-side i{
     font-size: 32px;
