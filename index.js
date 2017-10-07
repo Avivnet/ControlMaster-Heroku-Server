@@ -40,6 +40,7 @@ io.on('connection',function(socket){
     });
     socket.on("disconnect",function(){
         remove(connections,find(socket.id,true));
+        console.log("con close -" + socket.id);
     });
 });
 function find(connectionCode){
