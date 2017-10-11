@@ -11,8 +11,22 @@
         <div id="app">
             <nav>
                 <a href="#" class="brand-logo center">ControlMaster</a>
-                <span class="center codeTitle">Connect Code:</span>
-                <span class="center code">{{concode}}</span>
+                <section id="code-section" style="display:none;">
+                    <span class="center codeTitle">Connect Code:</span>
+                    <span class="center code">{{concode}}</span>
+                </section>
+
+                <div id="codepre" class="preloader-wrapper small active" style="top:50px;">
+                    <div class="spinner-layer" style="border-color:white;">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
             </nav>
             <div class="remote">
                 <button class="btn btn-side waves-effect waves-light blue-grey"><i class="material-icons">fast_rewind</i></button>
@@ -20,7 +34,7 @@
                 <button class="btn btn-side waves-effect waves-light blue-grey"><i class="material-icons">fast_forward</i></button>
             </div>
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large red" href="">
+                <a class="btn-floating btn-large red" v-on:click="newCode">
                     <i class="large material-icons">refresh</i>
                 </a>
             </div>
