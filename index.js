@@ -9,6 +9,9 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
+app.get('/color',function(req,res){
+    res.send('id: ' + req.query.id);
+});
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
