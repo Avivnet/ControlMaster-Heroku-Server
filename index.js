@@ -9,8 +9,10 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
-app.get('/color',function(req,res){
-    res.send('id: ' + req.query.id);
+app.get('/color/:r/:g/:b',function(req,res){
+    var color = 'rgb('+req.params.r+','+req.params.g+','+req.params.b+')';
+    res.send(color);
+
 });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
