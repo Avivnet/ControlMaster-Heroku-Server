@@ -12,7 +12,7 @@ app.get('/connections', function (req, res) {
 app.get('/color/:r/:g/:b',function(req,res){
     var rgb = [req.params.r,req.params.g,req.params.b];
     for(var i = 0; i<rgb.length; i++)
-        if(isNaN(rgb[i])) return;
+        if(isNaN(rgb[i])) res.send('wrong parameters!'); return;
     var color = 'rgb('+req.params.r+','+req.params.g+','+req.params.b+')';
     res.send(color);
 
