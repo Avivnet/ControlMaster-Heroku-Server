@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
+body{
+    background: #f2f2f2;
+}
 nav{
     background: rgb(74, 100, 218);
     height: 100px !important;
