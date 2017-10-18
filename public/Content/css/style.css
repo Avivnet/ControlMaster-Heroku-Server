@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
+:root {
+    --mainc: rgb(74, 100, 218);
+}
 body{
     background: #f2f2f2;
 }
@@ -6,7 +9,7 @@ body{
     top:50px;
 }
 nav{
-    background: rgb(74, 100, 218);
+    background: var(--mainc);
     height: 100px !important;
     text-align: center;
 }
@@ -24,14 +27,18 @@ nav{
     text-align: center;
     margin-top: 3em;
 }
+.getstarted{
+    max-height: 100% !important;
+    height: 100%;
+}
 .btn-play{
-    width: 10em !important;
-    height: 10em !important;
-    background: #4a64da !important;
+    width: 8em !important;
+    height: 8em !important;
+    background: var(--mainc) !important;
     
 }
 .btn-play i{
-    line-height: 2em !important;
+    line-height: 1.7em !important;
     font-size: 4em;
 }
 
@@ -40,12 +47,33 @@ nav{
     height: 6em !important;
     padding: 0 !important;
     border-radius: 30px;
+    margin: 1em;
 }
 .btn-side i{
     font-size: 45px;
     line-height: 1.5em;
 }
-
+.btn-reset{
+    background: var(--mainc);
+}
 .spinner-layer{
     border-color: #fff !important;
+}
+.info{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.info i{
+    font-size: 3em !important
+}
+.settings{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+.settings i{
+    font-size: 3em !important
 }

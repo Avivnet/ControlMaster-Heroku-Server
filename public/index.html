@@ -11,11 +11,13 @@
     <body>
         <div id="app">
             <nav>
+                <a class="info modal-trigger" href="#getstarted"><i class="material-icons">help_outline</i></a>
+                <a class="settings"><i class="material-icons">invert_colors</i></a>
                 <a href="#" class="brand-logo center" v-on:click="newCode">ControlMaster</a>
-                <section id="code-section" style="display:none;">
-                    <span class="center codeTitle">Connect Code:</span>
-                    <span class="center code">{{concode}}</span>
-                </section>
+                    <div id="code-section" style="display:none;">
+                        <span class="center codeTitle">Connect Code:</span>
+                        <span class="center code">{{concode}}</span>
+                    </div>
                 <div id="codepre" class="preloader-wrapper small active">
                     <div class="spinner-layer">
                       <div class="circle-clipper left">
@@ -34,12 +36,27 @@
                     <button class="btn btn-side waves-effect waves-light blue-grey"><i class="material-icons">fast_forward</i></button>
             </div>
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large" style="background:#4a64da;" v-on:click="newCode">
+                <a class="btn-reset btn-floating btn-large" v-on:click="newCode">
                     <i class="large material-icons">refresh</i>
                 </a>
             </div>
+            <div style="background:rgb(74, 100, 218); width:100%;display:none; height:2em; position:absolute; bottom:0; text-align:center; vertical-align:center;"><i id="constate" class="material-icons" style="vertical-align:center;">check</i>Not Connected</div>
+              <!-- Modal Structure -->
+            <div id="getstarted" class="modal bottom-sheet getstarted">
+                <div class="modal-content">
+                <h4>Welcome to ControlMaster</h4>
+                <p>ControlMaster is a powerful tool to control your computer media needs.
+                Download the run only software from this link in your computer: <a href="#">link.me/cmaster</a>
+                <h6>Enter this code in your computer:</h6></p><h5>{{concode}}</h5>
+                </div>
+                <div class="modal-footer" style="text-align:center">
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn" style="background:var(--mainc)">Get Started!</a>
+                </div>
+            </div>
+          
         </div>
         <script src="Content/js/jquery-3.2.1.min.js"></script>
+        <script src="Content/js/jquery.cookie.js"></script>
         <script src="Content/js/vue.js"></script>
         <script src="Content/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
