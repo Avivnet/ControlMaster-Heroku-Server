@@ -29,10 +29,7 @@ app.use(express.static('public'));
 var io = socket(server);
 
 io.on('connection',function(socket){
-    var connectionCode = getRandomInt(100000,1000000).toString();
-    while(find(connectionCode)!=-1) 
-         connectionCode = getRandomInt(100000,1000000).toString();
-    var connection = {connectionCode:connectionCode,socketid:socket.id}
+    var connection = {connectionCode:getNewCode(),socketid:socket.id}
     connections.push(connection);
     socket.emit('concode',connectionCode);
     console.log("WS Connected - "+ connection);
@@ -45,6 +42,12 @@ io.on('connection',function(socket){
         console.log("con close -" + socket.id);
     });
 });
+function getNewCode(){
+    var connectionCode = getRandomInt(100000,1000000).toString();
+    while(find(connectionCode)!=-1) 
+         connectionCode = getRandomInt(100000,1000000).toString();
+    return connectionCode;
+}
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
         if(connections[i].id==connectionCode)
