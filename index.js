@@ -31,7 +31,7 @@ var io = socket(server);
 io.on('connection',function(socket){
     var connection = {connectionCode:getNewCode(),socketid:socket.id}
     connections.push(connection);
-    socket.emit('concode',connectionCode);
+    socket.emit('concode',connection.connectionCode);
     console.log("WS Connected - "+ connection);
     socket.on('acmedia', function(data){
 
