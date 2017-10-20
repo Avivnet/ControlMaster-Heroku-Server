@@ -36,7 +36,7 @@ io.on('connection',function(socket){
     //Send the connection code back to the newly connected client
     socket.emit('concode',connection.connectionCode);
     //Logging the connection
-    console.log("WS Connected - "+ connection);
+    console.log("WS Connected - "+ JSON.stringify(connection));
     socket.on('acmedia', function(data){
 
         io.sockets.emit('acmedia',data);
