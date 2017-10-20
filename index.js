@@ -29,9 +29,13 @@ app.use(express.static('public'));
 var io = socket(server);
 
 io.on('connection',function(socket){
-    var connection = {connectionCode:getNewCode(),socketid:socket.id}
+    //Start a new connection
+    var connection = {connectionCode:getNewCode(),socketid:socket.id, phoneIp:socket.handshake.address}
+    //Add the connection to the list
     connections.push(connection);
+    //Send the connection code back to the newly connected client
     socket.emit('concode',connection.connectionCode);
+    //Logging the connection
     console.log("WS Connected - "+ connection);
     socket.on('acmedia', function(data){
 
