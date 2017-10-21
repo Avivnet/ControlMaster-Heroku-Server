@@ -37,8 +37,9 @@ io.on('connection',function(socket){
     socket.emit('concode',connection.connectionCode);
     //Logging the connection
     console.log("WS Connected - "+ JSON.stringify(connection));
+    //Handling an action of button click on the phone
     socket.on('acmedia', function(data){
-
+        
         io.sockets.emit('acmedia',data);
     });
     socket.on("disconnect",function(){
