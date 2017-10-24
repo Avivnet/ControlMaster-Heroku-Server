@@ -54,10 +54,11 @@ io.on('connection',function(socket){
             remove(connections,find(socket.id,true));
             connection = con;
             connection.c_socketid= socket.id;
-            socket.emit('con','ssc');
+            io.sockets.connected(connection.socketid).emit('con','connected');
+            socket.emit('con','ok');
         }
         else{
-            socket.emit('con','nsc');
+            socket.emit('con','fail');
             console.log(data.toString() + " " + JSON.stringify(connections));
         }
     });
