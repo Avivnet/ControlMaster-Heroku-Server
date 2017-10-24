@@ -22,11 +22,7 @@ app.get('/color/:r/:g/:b',function(req,res){
 });
 */
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
+
 // Static Routes
 app.use(express.static('public'));
 
@@ -35,7 +31,7 @@ var io = socket(server);
 
 io.on('connection',function(socket){
     //Start a new connection
-    var connection = {connectionCode:getNewCode(),socketid:socket.id,c_socketid:0}
+    var connection = {connectionCode:getNewCode(),socketid:socket.id,c_socketid:0};
     //Add the connection to the list
     connections.push(connection);
     //Send the connection code back to the newly connected client
@@ -51,7 +47,7 @@ io.on('connection',function(socket){
     socket.on('im_comp',function(data){
         var con = getConnectionByCode(data);
         if(con!=null){
-            remove(connections,find(socket.id,true));
+            removeConnectionByCode(connection.connectionCode);
             connection = con;
             connection.c_socketid= socket.id;
             io.sockets.connected(connection.socketid).emit('con','connected');
@@ -63,13 +59,15 @@ io.on('connection',function(socket){
         }
     });
     socket.on("disconnect",function(){
-        remove(connections,find(socket.id,true));
+        removeConnectionByCode(connection.connectionCode);
         console.log("con close -" + socket.id);
     });
 });
+
+//Connections methods:
 function getNewCode(){
     var connectionCode = getRandomInt(100000,1000000).toString();
-    while(find(connectionCode)!=-1) 
+    while(getConnectionByCode(connectionCode)!=null) 
          connectionCode = getRandomInt(100000,1000000).toString();
     return connectionCode;
 }
@@ -80,21 +78,21 @@ function getConnectionByCode(code){
     }
     return null;
 }
-function find(connectionCode){
+function removeConnectionByCode(code){
     for(var i=0; i<connections.length;i++){
-        //console.log(connections[i].connectionCode + " type(" + connections[i].connectionCode.prototype.getName() + ") !=" + Number(connectionCode.toString()));
-        if(parseInt(connections[i].connectionCode)==parseInt(connectionCode.toString()))
-            	return i;
+        if(connections[i].connectionCode==code)
+        {
+            array.splice(i, 1);
+        }
     }
-    return -1;
 }
-function find(socketid,b){
-    for(var i=0; i<connections.length;i++){
-        if(connections[i].socketid==socketid)
-        return i;
-    }
-    return -1;
+//END
+
+//Helpers:
+//Random number generator
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-function remove(array, index) {
-    array.splice(index, 1);
-}
+//END
