@@ -49,7 +49,7 @@ io.on('connection',function(socket){
     });
     //The computer says im a computer and i have a code
     socket.on('im_comp',function(data){
-        var c_index = find(connectionCode);
+        var c_index = find(connection.connectionCode);
         if(c_index!=-1){
             remove(connections,find(socket.id,true));
             connection = connection[c_index];
