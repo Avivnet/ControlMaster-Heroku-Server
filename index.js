@@ -58,6 +58,7 @@ io.on('connection',function(socket){
         }
         else{
             socket.emit('con','nsc');
+            console.log(data.toString() + " " + JSON.stringify(connections));
         }
     });
     socket.on("disconnect",function(){
