@@ -74,7 +74,7 @@ function getNewCode(){
 }
 function getConnectionByCode(code){
     for(var i=0; i<connections.length;i++){
-        if(parseInt(connections[i].connectionCode.toString())==parseInt(connectionCode.toString()))
+        if(parseInt(connections[i].connectionCode.toString())==parseInt(code.toString()))
             return connections[i];
     }
     return null;
