@@ -74,7 +74,7 @@ function getNewCode(){
 }
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
-        if(connections[i].connectionCode===Number(connectionCode.toString()))
+        if(connections[i].connectionCode==Number(connectionCode.toString()))
             	return i;
     }
     return -1;
