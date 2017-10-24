@@ -74,8 +74,8 @@ function getNewCode(){
 }
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
-        if(connections[i].connectionCode==connectionCode)
-        return i;
+        if(connections[i].connectionCode===connectionCode)
+            	return i;
     }
     return -1;
 }
