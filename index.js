@@ -35,7 +35,7 @@ var io = socket(server);
 
 io.on('connection',function(socket){
     //Start a new connection
-    var connection = {connectionCode:getNewCode(),socketid:socket.id,c_socketid:0, phoneIp:socket.handshake.address}
+    var connection = {connectionCode:getNewCode(),socketid:socket.id,c_socketid:0}
     //Add the connection to the list
     connections.push(connection);
     //Send the connection code back to the newly connected client
@@ -74,7 +74,7 @@ function getNewCode(){
 }
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
-        if(connections[i].id==connectionCode)
+        if(connections[i].connectionCode==connectionCode)
         return i;
     }
     return -1;
