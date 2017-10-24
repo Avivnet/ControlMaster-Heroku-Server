@@ -54,9 +54,10 @@ io.on('connection',function(socket){
             remove(connections,find(socket.id,true));
             connection = connection[c_index];
             connection.c_socketid= socket.id;
+            socket.emit('con','ssc');
         }
         else{
-            socket.emit('nsc');
+            socket.emit('con','nsc');
         }
     });
     socket.on("disconnect",function(){
