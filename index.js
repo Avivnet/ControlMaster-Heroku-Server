@@ -73,7 +73,13 @@ function getNewCode(){
     return connectionCode;
 }
 function find(connectionCode){
+    Object.prototype.getName = function() { 
+        var funcNameRegex = "/function (.{1,})\(/";
+        var results = (funcNameRegex).exec((this).constructor.toString());
+        return (results && results.length > 1) ? results[1] : "";
+     };
     for(var i=0; i<connections.length;i++){
+        console.log(connections[i].connectionCode + " type(" + connections[i].connectionCode.prototype.getName() + ") !=" + Number(connectionCode.toString()));
         if(connections[i].connectionCode==Number(connectionCode.toString()))
             	return i;
     }
