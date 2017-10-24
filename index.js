@@ -49,10 +49,10 @@ io.on('connection',function(socket){
     });
     //The computer says im a computer and i have a code
     socket.on('im_comp',function(data){
-        var c_index = find(data);
-        if(c_index!=-1){
+        var con = getConnectionByCode(data);
+        if(con!=null){
             remove(connections,find(socket.id,true));
-            connection = connection[c_index];
+            connection = con;
             connection.c_socketid= socket.id;
             socket.emit('con','ssc');
         }
@@ -71,6 +71,13 @@ function getNewCode(){
     while(find(connectionCode)!=-1) 
          connectionCode = getRandomInt(100000,1000000).toString();
     return connectionCode;
+}
+function getConnectionByCode(code){
+    for(var i=0; i<connections.length;i++){
+        if(parseInt(connections[i].connectionCode.toString())==parseInt(connectionCode.toString()))
+            return connections[i];
+    }
+    return null;
 }
 function find(connectionCode){
     for(var i=0; i<connections.length;i++){
