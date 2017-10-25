@@ -75,14 +75,14 @@ function getNewCode(){
 }
 function exsits(code){
     for(var i=0; i<connections.length;i++){
-        if(parseInt(connections[i].connectionCode.toString())==parseInt(code.toString()))
+        if((connections[i].connectionCode.toString())==(code.toString()))
             return true;
     }
     return false;
 }
 function getConnectionByCode(code){
     for(var i=0; i<connections.length;i++){
-        if(parseInt(connections[i].connectionCode.toString())==parseInt(code.toString()))
+        if((connections[i].connectionCode.toString())==(code.toString()))
             return connections[i];
     }
     return null;
