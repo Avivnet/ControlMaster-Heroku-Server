@@ -1,4 +1,4 @@
-var socket = io.connect("https://control-master.herokuapp.com");
+var socket = io.connect("https://nodejs-aviv.herokuapp.com");
 var app = new Vue({
     el: '#app',
     data: {
