@@ -91,7 +91,7 @@ function removeConnectionByCode(code){
     for(var i=0; i<connections.length;i++){
         if(connections[i].connectionCode==code)
         {
-            array.splice(i, 1);
+            connections.splice(i, 1);
         }
     }
 }
