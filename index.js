@@ -51,7 +51,7 @@ io.on('connection',function(socket){
             removeConnectionByCode(connection.connectionCode);
             connection = con;
             connection.c_socketid= socket.id;
-            io.sockets.socket[connection.socketid].emit('con','connected');
+            socket.broadcast.to(connection.socketid).emit('con','connected');
             socket.emit('con','ok');
         }
         else{
