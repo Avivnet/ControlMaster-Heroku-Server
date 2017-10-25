@@ -82,6 +82,7 @@ function exsits(code){
     return false;
 }
 function getConnectionByCode(code){
+    console.log(code);
     for(var i=0; i<connections.length;i++){
         if((connections[i].connectionCode.toString())==(code.toString()))
             return connections[i];
