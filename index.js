@@ -58,18 +58,27 @@ io.on('connection',function(socket){
             console.log(data.toString() + " " + JSON.stringify(connections));
         }
     });
+
     socket.on("disconnect",function(){
         removeConnectionByCode(connection.connectionCode);
         console.log("con close -" + socket.id);
     });
+
 });
 
 //Connections methods:
 function getNewCode(){
     var connectionCode = getRandomInt(100000,1000000).toString();
-    while(getConnectionByCode(connectionCode)!=null) 
+    while(exsits(connectionCode)!=null) 
          connectionCode = getRandomInt(100000,1000000).toString();
     return connectionCode;
+}
+function exsits(code){
+    for(var i=0; i<connections.length;i++){
+        if(parseInt(connections[i].connectionCode.toString())==parseInt(code.toString()))
+            return true;
+    }
+    return false;
 }
 function getConnectionByCode(code){
     for(var i=0; i<connections.length;i++){
