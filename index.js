@@ -38,6 +38,7 @@ io.on('connection',function(socket){
     socket.emit('concode',connection.connectionCode);
     //Logging the connection
     console.log("WS Connected - "+ JSON.stringify(connection));
+    
     //Handling an action of button click on the phone
     socket.on('acmedia', function(data){
         if(connection.c_socketid!=0)
@@ -58,7 +59,7 @@ io.on('connection',function(socket){
             console.log(data.toString() + " " + JSON.stringify(connections));
         }
     });
-
+    
     socket.on("disconnect",function(){
         removeConnectionByCode(connection.connectionCode);
         console.log("con close -" + socket.id);
@@ -69,7 +70,7 @@ io.on('connection',function(socket){
 //Connections methods:
 function getNewCode(){
     var connectionCode = getRandomInt(100000,1000000).toString();
-    while(exsits(connectionCode)!=null) 
+    while(exsits(connectionCode)) 
          connectionCode = getRandomInt(100000,1000000).toString();
     return connectionCode;
 }
