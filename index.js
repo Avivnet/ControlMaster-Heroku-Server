@@ -42,7 +42,7 @@ io.on('connection',function(socket){
     //Handling an action of button click on the phone
     socket.on('acmedia', function(data){
         if(connection.c_socketid!=0)
-            io.sockets.connected(connection.c_socketid).emit('acmedia',data);
+        socket.broadcast.to(connection.c_socketid).emit('acmedia',data);
     });
     //The computer says im a computer and i have a code
     socket.on('im_comp',function(data){
