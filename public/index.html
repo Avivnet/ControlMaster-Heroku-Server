@@ -31,9 +31,9 @@
                 </div>
             </nav>
             <div class="remote">
-                    <button class="btn btn-side waves-effect waves-light blue-grey"><i class="material-icons">fast_rewind</i></button>
+                    <button class="btn btn-side waves-effect waves-light blue-grey" onclick="socket.emit('acmedia', 'back');"><i class="material-icons">fast_rewind</i></button>
                     <button class="btn-play btn-floating btn-large waves-effect waves-light" onclick="socket.emit('acmedia', 'play');"><i class="material-icons">play_arrow</i></button>
-                    <button class="btn btn-side waves-effect waves-light blue-grey"><i class="material-icons">fast_forward</i></button>
+                    <button class="btn btn-side waves-effect waves-light blue-grey" onclick="socket.emit('acmedia', 'next');"><i class="material-icons">fast_forward</i></button>
             </div>
             <div class="fixed-action-btn">
                 <a class="btn-reset btn-floating btn-large" v-on:click="newCode">
