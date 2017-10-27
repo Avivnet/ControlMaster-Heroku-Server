@@ -49,6 +49,11 @@ socket.on('concode',function(data){
     $("#code-section").fadeIn();
 
 });
+socket.on('con',function(data){
+    $("#conState").removeClass("disconnected");
+    $("#conState").removeClass("connected");
+    $("#conState").addClass(data.toString());
+});
 socket.on('acmedia',function(data){
     //Data handle
 });

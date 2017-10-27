@@ -77,3 +77,19 @@ nav{
 .settings i{
     font-size: 3em !important
 }
+.status{
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+.status.disconnected:before{
+    content: "Disconnected";
+    color: red;
+    font-weight: 700;
+}
+.status.connected:before{
+    content: "Connected";
+    color: green;
+    font-weight: 700;
+}

@@ -44,6 +44,7 @@ io.on('connection',function(socket){
         if(connection.c_socketid!=0)
         socket.broadcast.to(connection.c_socketid).emit('acmedia',data);
     });
+    var sComp = false;
     //The computer says im a computer and i have a code
     socket.on('im_comp',function(data){
         var con = getConnectionByCode(data);
@@ -53,6 +54,7 @@ io.on('connection',function(socket){
             connection.c_socketid= socket.id;
             socket.broadcast.to(connection.socketid).emit('con','connected');
             socket.emit('con','ok');
+            sComp = true;
         }
         else{
             socket.emit('con','fail');
@@ -61,8 +63,13 @@ io.on('connection',function(socket){
     });
     
     socket.on("disconnect",function(){
-        removeConnectionByCode(connection.connectionCode);
-        console.log("con close -" + socket.id);
+        if(sComp){
+            socket.broadcast.to(connection.socketid).emit('con','disconnected');
+        }
+        else{
+            removeConnectionByCode(connection.connectionCode);
+            console.log("con close -" + socket.id);
+        }
     });
 
 });
