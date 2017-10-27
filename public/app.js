@@ -50,10 +50,11 @@ socket.on('concode',function(data){
 
 });
 socket.on('con',function(data){
-    $("#conState").removeClass("disconnected");
-    $("#conState").removeClass("connected");
-    $("#conState").addClass(data.toString());
+    $(".status").removeClass("disconnected");
+    $(".status").removeClass("connected");
+    $(".status").addClass(data.toString());
 });
 socket.on('acmedia',function(data){
     //Data handle
+    console.log("Action: "+data.toString());
 });

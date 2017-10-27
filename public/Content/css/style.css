@@ -83,13 +83,26 @@ nav{
     text-align: center;
     width: 100%;
 }
-.status.disconnected:before{
+.status.disconnected:after{
     content: "Disconnected";
     color: red;
     font-weight: 700;
 }
-.status.connected:before{
+.status.connected:after{
     content: "Connected";
     color: green;
     font-weight: 700;
+}
+.status i{
+    padding: 5px;
+}
+.status.disconnected i::before{
+    content: 'phonelink_off';
+    color: red;
+    vertical-align: -5px;
+}
+.status.connected i::before{
+    content: 'phonelink';
+    color: green;
+    vertical-align: -5px;
 }
