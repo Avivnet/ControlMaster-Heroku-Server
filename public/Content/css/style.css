@@ -82,6 +82,7 @@ nav{
     bottom: 5px;
     text-align: center;
     width: 100%;
+    font-size: 1.5em;
 }
 .status.disconnected:after{
     content: "Disconnected";
@@ -95,14 +96,15 @@ nav{
 }
 .status i{
     padding: 5px;
+    font-size: 1.5em;
 }
 .status.disconnected i::before{
     content: 'phonelink_off';
     color: red;
-    vertical-align: -5px;
+    vertical-align: -0.23em;
 }
 .status.connected i::before{
     content: 'phonelink';
     color: green;
-    vertical-align: -5px;
+    vertical-align: -0.23em;
 }
