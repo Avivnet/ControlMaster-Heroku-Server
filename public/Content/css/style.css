@@ -23,6 +23,9 @@ nav{
 .code{
     font-size: 1.5em;
 }
+.btn-floating:hover{
+    background: var(--mainc)!important;
+}
 .remote{
     text-align: center;
     margin-top: 3em;

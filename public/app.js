@@ -6,6 +6,9 @@ var app = new Vue({
     },
     methods: {
         newCode: function(){
+            $("#change_key").modal('open');
+        },
+        resetCode :function(){
             $("#code-section").hide();
             $("#codepre").show();
             socket.disconnect();
