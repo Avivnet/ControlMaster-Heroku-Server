@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
+* {
+    -webkit-user-select: none;
+}
 :root {
     --mainc: rgb(74, 100, 218);
 }
