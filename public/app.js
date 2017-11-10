@@ -22,6 +22,7 @@ var app = new Vue({
             $("#getstarted").modal('open');
             setCookie('firstTime','the_value', 365);
         }
+        window.android.pageDone();
     }
 });
 function setCookie(cname, cvalue, exdays) {
