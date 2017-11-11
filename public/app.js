@@ -22,7 +22,7 @@ var app = new Vue({
             $("#getstarted").modal('open');
             setCookie('firstTime','the_value', 365);
         }
-        window.android.pageDone();
+        window.hybrid.pageDone();
     }
 });
 function setCookie(cname, cvalue, exdays) {
