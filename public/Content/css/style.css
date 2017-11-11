@@ -114,3 +114,18 @@ nav{
     color: green;
     vertical-align: -0.23em;
 }
+@media screen and (max-width: 338px){
+    .btn-side {
+        width: 4.8em !important;
+    }
+    .fixed-action-btn{
+        right: 10px !important;
+        bottom: 10px !important; 
+    }
+    .info i{
+        font-size: 2.5em !important; 
+    }
+    .settings i{
+        font-size: 2.5em !important; 
+    }
+}
