@@ -1,6 +1,10 @@
 var express = require('express');
 var socket = require('socket.io');
+var fs = require('fs');
+
+//List of connections that are currently connected
 var connections = [];
+
 // App setup
 var app  = express();
 var server = app.listen((process.env.PORT || 5000),function(){
@@ -12,6 +16,17 @@ app.get('/connections', function (req, res) {
     res.send(connections);
 });
 
+//Get all active connections
+app.get('/api/keys', function (req, res) {
+    fs.readFile('/keys.json', 'utf8', function (err,data) {
+        if (err) {
+          return console.log(err);
+        }
+        res.send(data);
+    });
+});
+
+//Multi color support - exp
 /*
 app.get('/color/:r/:g/:b',function(req,res){
     var rgb = [req.params.r,req.params.g,req.params.b];
@@ -61,7 +76,8 @@ io.on('connection',function(socket){
             console.log(data.toString() + " " + JSON.stringify(connections));
         }
     });
-    
+
+    //Handle disconnect
     socket.on("disconnect",function(){
         if(sComp){
             socket.broadcast.to(connection.socketid).emit('con','disconnected');
