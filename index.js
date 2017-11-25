@@ -18,7 +18,7 @@ app.get('/connections', function (req, res) {
 
 //Get all active connections
 app.get('/api/keys', function (req, res) {
-    fs.readFile('/keys.json', 'utf8', function (err,data) {
+    fs.readFile('./keys.json', 'utf8', function (err,data) {
         if (err) {
           return console.log(err);
         }
