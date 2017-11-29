@@ -17,7 +17,18 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
-
+app.get('/api/add', function (req, res) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var myobj = {"software":"youtu3be","keys":[{"play":"k"},{"next":"l"},{"back":"j"}]};
+        db.collection("keys").insertOne(myobj, function(err, res) {
+          if (err) throw err;
+          console.log("1 document inserted");
+          res.send("result: ok");
+          db.close();
+        });
+    });
+});
 //Get all active connections
 app.get('/api/keys', function (req, res) {
     MongoClient.connect(url, function(err, db) {
