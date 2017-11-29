@@ -17,14 +17,14 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
-app.get('/api/add', function (req, res) {
+app.get('/api/add/:soft/:play/:next/:back', function (req, res) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var myobj = {"software":"youtu3be","keys":[{"play":"k"},{"next":"l"},{"back":"j"}]};
-        db.collection("keys").insertOne(myobj, function(err, res) {
+        var myobj = {"software":req.params.soft,"keys":[{"play":req.params.play},{"next":req.params.next},{"back":req.params.back}]};
+        db.collection("keys.keyset").insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("1 document inserted");
-          res.send("result: ok");
+          //res.send("result: ok");
           db.close();
         });
     });
