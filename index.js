@@ -20,7 +20,8 @@ app.get('/connections', function (req, res) {
 app.get('/api/add/:soft/:play/:next/:back', function (req, res) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var myobj = {"software":req.params.soft,"keys":[{"play":req.params.play},{"next":req.params.next},{"back":req.params.back}]};
+        var myobj = {"software":req.params.soft.toString(),"keys":[{"play":req.params.play.toString()},{"next":req.params.next.toString()},{"back":req.params.back.toString()}]};
+        
         db.collection("keys.keyset").insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("1 document inserted");
