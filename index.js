@@ -28,6 +28,7 @@ app.get('/api/add/:soft/:play/:next/:back', function (req, res) {
           db.close();
         });
     });
+    res.send("ok");
 });
 //Get all active connections
 app.get('/api/keys', function (req, res) {
