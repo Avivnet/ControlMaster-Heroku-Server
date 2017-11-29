@@ -1,6 +1,8 @@
 var express = require('express');
 var socket = require('socket.io');
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://cmaster-db:avivadi1@ds123926.mlab.com:23926/controlmaster-db";
 
 //List of connections that are currently connected
 var connections = [];
@@ -18,12 +20,20 @@ app.get('/connections', function (req, res) {
 
 //Get all active connections
 app.get('/api/keys', function (req, res) {
-    fs.readFile('./keys.json', 'utf8', function (err,data) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("keys").find({}).toArray(function(err, result) {
+          if (err) throw err;
+          res.send(result);
+          db.close();
+        });
+    });
+    /*fs.readFile('./keys.json', 'utf8', function (err,data) {
         if (err) {
           return console.log(err);
         }
         res.send(data);
-    });
+    });*/
 });
 
 //Multi color support - exp
