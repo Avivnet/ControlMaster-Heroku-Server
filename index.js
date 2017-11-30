@@ -40,7 +40,7 @@ app.get('/api/keys', function (req, res) {
         if (err) throw err;
         db.collection("keys").find({}).toArray(function(err, result) {
           if (err) throw err;
-          result.find({}, { _id: 0 }).toArray(function (err, array) {
+          JSON.parse(result).find({}, { _id: 0 }).toArray(function (err, array) {
             res.send(array);
           })
           db.close();
