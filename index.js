@@ -31,13 +31,18 @@ app.get('/api/add/:soft/:play/:next/:back', function (req, res) {
     });
     res.send("ok");
 });
+app.get('/api/addkey/:soft/:keyname/:keyval', function (req, res) {
+    res.send("ok");
+});
 //Get all active connections
 app.get('/api/keys', function (req, res) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         db.collection("keys").find({}).toArray(function(err, result) {
           if (err) throw err;
-          res.send(result);
+          result.find({}, { _id: 0 }).toArray(function (err, array) {
+            res.send(array);
+          })
           db.close();
         });
     });
