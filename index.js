@@ -17,6 +17,7 @@ var server = app.listen((process.env.PORT || 5000),function(){
 app.get('/connections', function (req, res) {
     res.send(connections);
 });
+//add new software support
 app.get('/api/add/:soft/:play/:next/:back', function (req, res) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
@@ -40,18 +41,10 @@ app.get('/api/keys', function (req, res) {
         if (err) throw err;
         db.collection("keys").find({}).toArray(function(err, result) {
           if (err) throw err;
-          JSON.parse(result).find({}, { _id: 0 }).toArray(function (err, array) {
-            res.send(array);
-          })
+          res.send(result);
           db.close();
         });
     });
-    /*fs.readFile('./keys.json', 'utf8', function (err,data) {
-        if (err) {
-          return console.log(err);
-        }
-        res.send(data);
-    });*/
 });
 
 //Multi color support - exp
