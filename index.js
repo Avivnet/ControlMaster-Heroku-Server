@@ -98,6 +98,10 @@ io.on('connection',function(socket){
         }
     });
 
+    //I already have a code
+    socket.on("r-concode",function(data){
+        connection.connectionCode = data.toString();
+    });
     //Handle disconnect
     socket.on("disconnect",function(){
         if(sComp){
