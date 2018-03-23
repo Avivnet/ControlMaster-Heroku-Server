@@ -2,7 +2,7 @@ var express = require('express');
 var socket = require('socket.io');
 var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://cmaster-db:avivadi1@ds123926.mlab.com:23926/controlmaster-db";
+var url = "mongodb://cmaster:HkT8tDVWvhTbC3NC@ds123926.mlab.com:23926/controlmaster-db";
 
 //List of connections that are currently connected
 var connections = [];
