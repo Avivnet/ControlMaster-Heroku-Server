@@ -108,6 +108,7 @@ io.on('connection',function(socket){
             socket.broadcast.to(connection.socketid).emit('con','disconnected');
         }
         else{
+            socket.broadcast.to(connection.c_socketid).emit('con','disconnected');
             removeConnectionByCode(connection.connectionCode);
             console.log("con close -" + socket.id);
         }
